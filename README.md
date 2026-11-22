@@ -36,11 +36,11 @@ operational estimates, not published figures, everywhere they surface.
 
 ## Architecture
 
-The advisor runs as a Claude agent over a deterministic rules engine, not as a
+The advisor runs as an LLM agent over a deterministic rules engine, not as a
 free-text prompt:
 
 ```
-      ViT grade  ──►  Claude agent  ──►  advice
+      ViT grade  ──►  LLM agent  ──►  advice
                           │  ▲
                    tools  │  │  grounded results
                           ▼  │

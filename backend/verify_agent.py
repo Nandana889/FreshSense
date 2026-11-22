@@ -1,5 +1,5 @@
 """
-Verify the Claude agent against the real API.
+Verify the LLM agent against the real API.
 
 Everything else in this project is tested offline. This script is the part that
 needs a key, so run it once after setting ANTHROPIC_API_KEY (or writing
@@ -89,7 +89,7 @@ def compare_with_engine(label, advice, case):
     )
 
     check(f"{label}: ran through the agent",
-          advice["engine"] == "claude-agent", advice["engine"])
+          advice["engine"] == "ai-agent", advice["engine"])
     check(f"{label}: action matches the engine",
           advice["action"] == engine["action"],
           f"{advice['action']} vs {engine['action']}")

@@ -290,7 +290,7 @@ export default function ShopkeeperAdvice({
   onVegetableChange,
   onStorageChange,
 }) {
-  const usedAgent = advice?.engine === 'claude-agent';
+  const usedAgent = advice?.engine === 'ai-agent';
 
   return (
     <section id="advice" className="section">

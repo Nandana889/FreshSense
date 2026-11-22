@@ -59,7 +59,7 @@ response falls back to the rules engine entirely.
 |---|---|
 | `knowledge.py` | The grounded tables, with provenance for every figure |
 | `decide.py` | Deterministic engine: all arithmetic and safety branching |
-| `advisor.py` | The Claude agent, vision input, and follow-up questions |
+| `advisor.py` | The LLM agent, vision input, and follow-up questions |
 | `env.py` | Dependency-free `.env` loader |
 | `__init__.py` | `get_advice()` / `ask_followup()` entry points and fallback logic |
 

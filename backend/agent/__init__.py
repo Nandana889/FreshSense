@@ -51,7 +51,7 @@ def get_advice(
     """
     Shopkeeper advice for one classified item.
 
-    Tries the Claude agent first when `use_agent` is set and credentials are
+    Tries the LLM agent first when `use_agent` is set and credentials are
     configured, and falls back to the deterministic rules engine otherwise so
     the endpoint always returns usable advice.
     """

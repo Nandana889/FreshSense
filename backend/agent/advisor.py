@@ -1,5 +1,5 @@
 """
-Tool-using Claude agent that explains a freshness classification to a shopkeeper.
+Tool-using LLM agent that explains a freshness classification to a shopkeeper.
 
 Division of responsibility
 --------------------------
@@ -98,7 +98,7 @@ and the shopkeeper should check the whole item. Do not invent a location."""
 
 
 class AgentUnavailable(RuntimeError):
-    """Raised when the Claude-backed advisor cannot be used at all."""
+    """Raised when the model-backed advisor cannot be used at all."""
 
 
 def credentials_available():
@@ -282,7 +282,7 @@ def advise(
     images=None,
 ):
     """
-    Produce shopkeeper advice using Claude, grounded in the rules engine.
+    Produce shopkeeper advice using the model, grounded in the rules engine.
 
     `images` may carry the base64 PNGs from /predict ("original_image" and
     "gradcam_overlay"); when both are present the agent is shown them and adds
@@ -400,7 +400,7 @@ def advise(
                 (submitted.get("where_to_look") or None) if saw_images else None
             ),
             "saw_images": saw_images,
-            "engine": "claude-agent",
+            "engine": "ai-agent",
             "model": MODEL,
         }
     )
@@ -423,7 +423,7 @@ def _run(client, request, allow_fallback_beta):
         final = runner.until_done()
     except (anthropic.BadRequestError, TypeError) as exc:
         if not allow_fallback_beta:
-            raise AgentUnavailable(f"Claude request rejected: {exc}") from exc
+            raise AgentUnavailable(f"Model request rejected: {exc}") from exc
 
         # The installed SDK or endpoint may predate the refusal-fallback beta.
         logger.warning(
@@ -433,13 +433,13 @@ def _run(client, request, allow_fallback_beta):
         )
         return _run(client, request, allow_fallback_beta=False)
     except anthropic.APIError as exc:
-        raise AgentUnavailable(f"Claude API error: {exc}") from exc
+        raise AgentUnavailable(f"Model API error: {exc}") from exc
 
     stop_reason = getattr(final, "stop_reason", None)
 
     if stop_reason == "refusal":
         raise AgentUnavailable(
-            "Claude declined the request "
+            "The model declined the request "
             f"({getattr(final, 'stop_details', None)})."
         )
 
@@ -580,4 +580,4 @@ def answer_followup(
     if not answer:
         raise AgentUnavailable("The agent returned an empty answer.")
 
-    return {"answer": answer, "engine": "claude-agent", "model": MODEL}
+    return {"answer": answer, "engine": "ai-agent", "model": MODEL}

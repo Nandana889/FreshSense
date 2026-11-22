@@ -2,7 +2,7 @@
 Deterministic decision engine behind the shopkeeper advisor.
 
 This module owns all of the arithmetic and all of the safety branching. The
-Claude agent calls into it through tools rather than reasoning about numbers
+LLM agent calls into it through tools rather than reasoning about numbers
 itself, which means:
 
   * shelf-life figures and safety rules are always traceable to `knowledge.py`,
@@ -10,8 +10,8 @@ itself, which means:
   * the app still gives correct, if blunter, advice when no API key is
     configured and the language model is unavailable.
 
-`assess()` is the single entry point. `agent.py` wraps it with Claude for the
-explanation; `app.py` falls back to it directly.
+`assess()` is the single entry point. `agent.py` wraps it with the model for
+the explanation; `app.py` falls back to it directly.
 """
 
 from datetime import date, timedelta
