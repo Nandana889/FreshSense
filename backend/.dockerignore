@@ -1,0 +1,12 @@
+# The checkpoint is fetched from the Hugging Face Hub at boot, never copied in.
+checkpoints/
+outputs/
+
+__pycache__/
+*.py[cod]
+
+.env
+*.env
+!.env.example
+
+verify_agent.py

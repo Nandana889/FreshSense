@@ -15,6 +15,7 @@ pydantic==2.14.3
 torch==2.15.0+cpu
 torchvision==0.29.2+cpu
 timm==1.0.31                  # supplies vit_base_patch16_224
+huggingface-hub==2.4.0        # fetches the checkpoint when it is not on disk
 grad-cam==1.5.7               # imported as pytorch_grad_cam
 
 # --- Image handling ---
