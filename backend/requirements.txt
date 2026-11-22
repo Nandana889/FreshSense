@@ -1,0 +1,28 @@
+# Vegetable Freshness XAI - backend dependencies
+# Pinned to the versions this project was developed and tested against.
+#
+# torch/torchvision are the CPU builds. On a machine with CUDA, install those
+# two from the PyTorch index instead:
+#   pip install torch==2.15.0 torchvision==0.29.2 --index-url https://download.pytorch.org/whl/cu124
+
+# --- API ---
+fastapi==0.162.0
+uvicorn==0.54.0
+python-multipart==0.0.33      # required by FastAPI for multipart file uploads
+pydantic==2.14.3
+
+# --- Model + explainability ---
+torch==2.15.0+cpu
+torchvision==0.29.2+cpu
+timm==1.0.31                  # supplies vit_base_patch16_224
+grad-cam==1.5.7               # imported as pytorch_grad_cam
+
+# --- Image handling ---
+numpy==2.5.4
+pillow==13.0.0
+opencv-python==5.0.0.93
+
+# --- Agentic shopkeeper advisor ---
+# Optional: without it (or without ANTHROPIC_API_KEY set) the advisor falls
+# back to the deterministic rules engine in backend/agent/decide.py.
+anthropic==2.12.0

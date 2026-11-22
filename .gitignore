@@ -1,0 +1,24 @@
+# Secrets -- never commit a real API key.
+.env
+*.env
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# Model weights (343 MB; too large for git, keep out of history)
+backend/checkpoints/*.pth
+backend/outputs/
+
+# Node
+node_modules/
+dist/
+*.local
+
+# Editors / OS
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
