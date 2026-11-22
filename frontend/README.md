@@ -80,8 +80,11 @@ result.
 
 ## Deploying
 
+Live at **https://freshsense-self.vercel.app**.
+
 This directory is the Vercel root directory for the project; Vite is
-auto-detected (`npm run build` → `dist/`). Set `VITE_API_BASE_URL` to a
+auto-detected (`npm run build` → `dist/`). Deploys are run from here with
+`vercel deploy --prod`, not triggered by Git pushes. Set `VITE_API_BASE_URL` to a
 publicly reachable HTTPS backend URL before the deployed page will work — see
 **Deployment** in the [root README](../README.md) for why the backend cannot go
 on Vercel alongside it.

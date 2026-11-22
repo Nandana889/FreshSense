@@ -112,9 +112,16 @@ model on CPU.
 The frontend and the backend cannot be deployed to the same place, and the
 reason is worth stating plainly rather than discovering at build time.
 
-**Frontend — Vercel.** `frontend/` is the Vercel root directory. Vite is
-auto-detected, so there is no build configuration to maintain. Set one
-environment variable on the project:
+**Frontend — Vercel.** Live at **https://freshsense-self.vercel.app**.
+
+`frontend/` is the Vercel root directory. Vite is auto-detected, so there is no
+build configuration to maintain. The project is deployed from the CLI
+(`vercel deploy --prod` from `frontend/`) rather than from a Git connection, so
+**a push to this repository does not redeploy the site** — run the command, or
+run `vercel git connect` once the Vercel GitHub App has access to this
+repository.
+
+Set one environment variable on the project:
 
 | Variable | Value |
 |---|---|
@@ -133,6 +140,9 @@ that fits it; it needs a host that runs a persistent container with disk:
   mounted
 - Hugging Face Spaces — suits the model-plus-API shape well
 - Any VM running `uvicorn app:app` behind HTTPS
+
+Until that is set, the live site loads and every analysis fails with a
+connection error. That is expected: there is no backend behind it yet.
 
 The deployed page is served over HTTPS, so the API it calls must be HTTPS too:
 a browser blocks an HTTPS page from calling `http://127.0.0.1:8000` as mixed
